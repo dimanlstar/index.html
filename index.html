@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAP YOUR CRYPTO - Powered by Jupiter</title>
+    
+    <style>
+        /* ================================================= */
+        /* === 1. Глобальные CSS-переменные для Jupiter === */
+        /* Установлена Темно-Зеленая Тема для виджета */
+        /* ================================================= */
+        :root {
+            --jupiter-plugin-background: 0, 70, 0; /* Темно-зеленый фон виджета */
+            --jupiter-plugin-primary: 153, 255, 153; /* Светло-зеленый акцент (кнопки) */
+            --jupiter-plugin-primaryText: 255, 255, 255; /* Белый текст */
+            --jupiter-plugin-warning: 255, 215, 0; /* Золотистый/желтый для предупреждений */
+            --jupiter-plugin-interactive: 30, 80, 30; /* Более светлый зеленый для полей ввода */
+            --jupiter-plugin-module: 15, 60, 15; /* Фон карточек/модулей */
+        }
+        
+        /* === 2. Стили для вашей страницы === */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            background-color: #222; 
+            color: white; 
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        #jupiter-swap-container {
+            width: 420px; 
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            /* Устанавливаем фон контейнера, чтобы избежать белого мерцания */
+            background-color: rgb(var(--jupiter-plugin-background));
+        }
+        .branding-note {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SWAP YOUR CRYPTO</h1>
+    
+    <div id="jupiter-swap-container"></div>
+    
+    <p class="branding-note">
+        Powered by Jupiter | Используется Jupiter Legacy API
+    </p>
+
+    <script src="https://terminal.jup.ag/main-v2.js" data-preload></script>
+
+    <script>
+        window.onload = function() {
+            if (window.Jupiter) {
+                console.log("Jupiter Plugin загружен и инициализирован.");
+
+                window.Jupiter.init({
+                    // Параметры режима
+                    displayMode: "integrated",
+                    integratedTargetId: "jupiter-swap-container", 
+                    
+                    // Настройка темы (для темных цветов используем "dark")
+                    theme: "dark", 
+                    
+                    // Настройка RPC:
+                    // Используем надежный публичный RPC, чтобы избежать ошибки "RPC not responding"
+                    endpoint: "https://api.mainnet-beta.solana.com", 
+                    // Можно использовать альтернативный: "https://solana-mainnet.rpc.extrnode.com/"
+                    
+                    // !!! ВАШИ НАСТРОЙКИ КОМИССИИ И РЕФЕРЕРА !!!
+                    platformFeeAndReferrer: {
+                         platformFeeBps: 5, // 0.05% комиссии
+                         referrer: "7KmcLUUBpWGCbsi91hAfArLDiavF63c15kBDRwGzPLgd" 
+                    },
+                    
+                    // Начальные токены для лучшего UX
+                    formProps: {
+                         initialInputMint: "So11111111111111111111111111111111111111112", // SOL
+                         initialOutputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // USDC
+                    },
+
+                    // Обработчики событий
+                    onSuccess: ({ txid }) => {
+                        console.log(`Своп завершен! TX ID: ${txid}`);
+                    },
+                    onSwapError: ({ error }) => {
+                        console.error("Ошибка при свопе:", error);
+                    }
+                });
+                
+            } else {
+                console.error("Jupiter Plugin не загрузился!");
+            }
+        };
+    </script>
+    
+</body>
+</html>
