@@ -6,33 +6,21 @@
     <title>SWAP YOUR CRYPTO - Powered by Jupiter</title>
     
     <style>
-        /* ================================================= */
-        /* === 1. Глобальные CSS-переменные для Jupiter === */
-        /* Установлена Темно-Зеленая Тема (Dark Theme) с высоким контрастом */
-        /* ================================================= */
         :root {
-            /* Основной фон виджета (Темно-зеленый) */
             --jupiter-plugin-background: 0, 70, 0; 
-            /* Основной цвет акцента (Светло-зеленый для кнопок) */
             --jupiter-plugin-primary: 153, 255, 153; 
-            /* Основной цвет текста (Белый) */
             --jupiter-plugin-primaryText: 255, 255, 255; 
-            /* Цвет для предупреждений (Золотистый/Желтый) */
             --jupiter-plugin-warning: 255, 215, 0; 
-            /* Фон полей ввода */
             --jupiter-plugin-interactive: 30, 80, 30; 
-            /* Фон карточек/модулей */
             --jupiter-plugin-module: 15, 60, 15; 
         }
         
-        /* === 2. Стили для вашей страницы === */
         body {
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 50px;
-            /* Темный фон страницы */
             background-color: #222; 
             color: white; 
         }
@@ -73,29 +61,26 @@
                 console.log("Jupiter Plugin загружен и инициализирован.");
 
                 window.Jupiter.init({
-                    // Параметры режима
                     displayMode: "integrated",
                     integratedTargetId: "jupiter-swap-container", 
                     
-                    // Настройка темы
                     theme: "dark", 
                     
-                    // !!! ИСПРАВЛЕНИЕ RPC: Используем Helius для стабильности !!!
                     endpoint: "https://mainnet.helius-rpc.com/", 
                     
-                    // ВАШИ НАСТРОЙКИ КОМИССИИ И РЕФЕРЕРА
+                    // !!! УВЕЛИЧЕНИЕ ТАЙМАУТА до 10 секунд !!!
+                    rpcTimeout: 10000, 
+                    
                     platformFeeAndReferrer: {
                          platformFeeBps: 5, 
                          referrer: "7KmcLUUBpWGCbsi91hAfArLDiavF63c15kBDRwGzPLgd" 
                     },
                     
-                    // Начальные токены
                     formProps: {
-                         initialInputMint: "So11111111111111111111111111111111111111112", // SOL
-                         initialOutputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // USDC
+                         initialInputMint: "So11111111111111111111111111111111111111112", 
+                         initialOutputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" 
                     },
 
-                    // Обработчики событий
                     onSuccess: ({ txid }) => {
                         console.log(`Своп завершен! TX ID: ${txid}`);
                     },
