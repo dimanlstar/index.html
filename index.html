@@ -8,15 +8,21 @@
     <style>
         /* ================================================= */
         /* === 1. Глобальные CSS-переменные для Jupiter === */
-        /* Установлена Темно-Зеленая Тема для виджета */
+        /* Установлена Темно-Зеленая Тема (Dark Theme) для виджета */
         /* ================================================= */
         :root {
-            --jupiter-plugin-background: 0, 70, 0; /* Темно-зеленый фон виджета */
-            --jupiter-plugin-primary: 153, 255, 153; /* Светло-зеленый акцент (кнопки) */
-            --jupiter-plugin-primaryText: 255, 255, 255; /* Белый текст */
-            --jupiter-plugin-warning: 255, 215, 0; /* Золотистый/желтый для предупреждений */
-            --jupiter-plugin-interactive: 30, 80, 30; /* Более светлый зеленый для полей ввода */
-            --jupiter-plugin-module: 15, 60, 15; /* Фон карточек/модулей */
+            /* Основной фон виджета (Темно-зеленый) */
+            --jupiter-plugin-background: 0, 70, 0; 
+            /* Основной цвет акцента (Светло-зеленый для кнопок) */
+            --jupiter-plugin-primary: 153, 255, 153; 
+            /* Основной цвет текста (Белый) */
+            --jupiter-plugin-primaryText: 255, 255, 255; 
+            /* Цвет для предупреждений (Золотистый/Желтый) */
+            --jupiter-plugin-warning: 255, 215, 0; 
+            /* Фон полей ввода (Более светлый зеленый/Серый) */
+            --jupiter-plugin-interactive: 30, 80, 30; 
+            /* Фон карточек/модулей */
+            --jupiter-plugin-module: 15, 60, 15; 
         }
         
         /* === 2. Стили для вашей страницы === */
@@ -26,6 +32,7 @@
             flex-direction: column;
             align-items: center;
             padding-top: 50px;
+            /* Темный фон страницы для гармонии с виджетом */
             background-color: #222; 
             color: white; 
         }
@@ -39,7 +46,6 @@
             margin-top: 20px;
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            /* Устанавливаем фон контейнера, чтобы избежать белого мерцания */
             background-color: rgb(var(--jupiter-plugin-background));
         }
         .branding-note {
@@ -74,18 +80,17 @@
                     // Настройка темы (для темных цветов используем "dark")
                     theme: "dark", 
                     
-                    // Настройка RPC:
-                    // Используем надежный публичный RPC, чтобы избежать ошибки "RPC not responding"
-                    endpoint: "https://api.mainnet-beta.solana.com", 
-                    // Можно использовать альтернативный: "https://solana-mainnet.rpc.extrnode.com/"
+                    // !!! ИСПРАВЛЕНИЕ RPC: Используем более надежный узел !!!
+                    // Это должно устранить ошибку "RPC not responding" на GitHub Pages
+                    endpoint: "https://solana-mainnet.rpc.extrnode.com/", 
                     
                     // !!! ВАШИ НАСТРОЙКИ КОМИССИИ И РЕФЕРЕРА !!!
                     platformFeeAndReferrer: {
-                         platformFeeBps: 5, // 0.05% комиссии
+                         platformFeeBps: 5, 
                          referrer: "7KmcLUUBpWGCbsi91hAfArLDiavF63c15kBDRwGzPLgd" 
                     },
                     
-                    // Начальные токены для лучшего UX
+                    // Начальные токены
                     formProps: {
                          initialInputMint: "So11111111111111111111111111111111111111112", // SOL
                          initialOutputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // USDC
