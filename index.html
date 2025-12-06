@@ -8,7 +8,7 @@
     <style>
         /* ================================================= */
         /* === 1. Глобальные CSS-переменные для Jupiter === */
-        /* Установлена Темно-Зеленая Тема (Dark Theme) для виджета */
+        /* Установлена Темно-Зеленая Тема (Dark Theme) с высоким контрастом */
         /* ================================================= */
         :root {
             /* Основной фон виджета (Темно-зеленый) */
@@ -19,7 +19,7 @@
             --jupiter-plugin-primaryText: 255, 255, 255; 
             /* Цвет для предупреждений (Золотистый/Желтый) */
             --jupiter-plugin-warning: 255, 215, 0; 
-            /* Фон полей ввода (Более светлый зеленый/Серый) */
+            /* Фон полей ввода */
             --jupiter-plugin-interactive: 30, 80, 30; 
             /* Фон карточек/модулей */
             --jupiter-plugin-module: 15, 60, 15; 
@@ -32,7 +32,7 @@
             flex-direction: column;
             align-items: center;
             padding-top: 50px;
-            /* Темный фон страницы для гармонии с виджетом */
+            /* Темный фон страницы */
             background-color: #222; 
             color: white; 
         }
@@ -77,14 +77,13 @@
                     displayMode: "integrated",
                     integratedTargetId: "jupiter-swap-container", 
                     
-                    // Настройка темы (для темных цветов используем "dark")
+                    // Настройка темы
                     theme: "dark", 
                     
-                    // !!! ИСПРАВЛЕНИЕ RPC: Используем более надежный узел !!!
-                    // Это должно устранить ошибку "RPC not responding" на GitHub Pages
-                    endpoint: "https://solana-mainnet.rpc.extrnode.com/", 
+                    // !!! ИСПРАВЛЕНИЕ RPC: Используем Helius для стабильности !!!
+                    endpoint: "https://mainnet.helius-rpc.com/", 
                     
-                    // !!! ВАШИ НАСТРОЙКИ КОМИССИИ И РЕФЕРЕРА !!!
+                    // ВАШИ НАСТРОЙКИ КОМИССИИ И РЕФЕРЕРА
                     platformFeeAndReferrer: {
                          platformFeeBps: 5, 
                          referrer: "7KmcLUUBpWGCbsi91hAfArLDiavF63c15kBDRwGzPLgd" 
