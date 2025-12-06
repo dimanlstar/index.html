@@ -6,10 +6,6 @@
     <title>SWAP YOUR CRYPTO - Powered by Jupiter</title>
     
     <style>
-        /* ================================================= */
-        /* === 1. Глобальные CSS-переменные для Jupiter === */
-        /* Установлена Темно-Зеленая Тема (Dark Theme) */
-        /* ================================================= */
         :root {
             --jupiter-plugin-background: 0, 70, 0; 
             --jupiter-plugin-primary: 153, 255, 153; 
@@ -19,7 +15,6 @@
             --jupiter-plugin-module: 15, 60, 15; 
         }
         
-        /* === 2. Стили для вашей страницы === */
         body {
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -71,11 +66,8 @@
                     
                     theme: "dark", 
                     
-                    // !!! ИСПОЛЬЗУЕМ TRITON ONE - САМЫЙ БЫСТРЫЙ ПУБЛИЧНЫЙ RPC !!!
-                    endpoint: "https://solana-mainnet.triton.one/", 
-                    
-                    // Увеличиваем таймаут до 10 секунд
-                    rpcTimeout: 10000, 
+                    // !!! УДАЛЕНЫ ENDPOINT И RPCTIMEOUT !!! 
+                    // Jupiter будет использовать свой внутренний надежный RPC.
                     
                     platformFeeAndReferrer: {
                          platformFeeBps: 5, 
