@@ -6,6 +6,7 @@
     <title>SWAP YOUR CRYPTO - Powered by Jupiter</title>
     
     <style>
+        /* ... Стили остаются прежними (темно-зеленая тема) ... */
         :root {
             --jupiter-plugin-background: 0, 70, 0; 
             --jupiter-plugin-primary: 153, 255, 153; 
@@ -66,8 +67,8 @@
                     
                     theme: "dark", 
                     
-                    // !!! УДАЛЕНЫ ENDPOINT И RPCTIMEOUT !!! 
-                    // Jupiter будет использовать свой внутренний надежный RPC.
+                    // !!! УДАЛЕНЫ ENDPOINT и RPCTIMEOUT !!!
+                    // Позволяем Jupiter выбрать самый стабильный узел из своего пула.
                     
                     platformFeeAndReferrer: {
                          platformFeeBps: 5, 
